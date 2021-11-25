@@ -23,31 +23,24 @@
       </fieldset>
     </form>
 
-    <ShoppingCart/>
+    <!-- <ShoppingCart /> -->
   </div>
-  
   <router-link :to="{name: 'Address'}">上一步</router-link>
   <router-link :to="{name: 'Checkout'}"><Button>下一步</Button></router-link>
 </template>
 
 <script>
-import ShoppingCart from "@/components/ShoppingCart"
 import Button from "@/components/Button"
 import Stepper from "@/components/Stepper"
+// import ShoppingCart from "@/components/ShoppingCart"
 
 export default {
   name: 'Shipping',
   components: {
     Button,
-    ShoppingCart,
     Stepper,
+    // ShoppingCart
   },
-  data() {
-    return {
-
-    }
-  }
-
 }
 </script>
 

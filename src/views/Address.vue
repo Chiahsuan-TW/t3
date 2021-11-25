@@ -8,7 +8,7 @@
         <div class="input-group">
           <label for="title">稱謂</label>
           <select name="title" id="title">
-            <option value=""></option>
+            <option v-for="(gender, index) in genders" :key="index" value="gender">{{gender}}</option>
           </select>
         </div>
         <div class="input-group"><label for="name">姓名</label><input id="name" placeholder="請輸入姓名" type="text"></div>
@@ -23,29 +23,36 @@
         <div class="input-group"><label for="address">地址</label><input id="address" placeholder="請輸入地址" type="text"></div>
       </fieldset>
     </form>
-
-    
-    <ShoppingCart />
+    <!-- <ShoppingCart /> -->
     <router-link class="next" :to="{name: 'Shipping'}"><Button class="next">下一步 -></Button></router-link>
   </div>
 </template>
 
 <script>
-import ShoppingCart from '@/components/ShoppingCart.vue'
 import Button from '@/components/Button.vue'
 import Stepper from '@/components/Stepper.vue'
+// import ShoppingCart from '@/components/ShoppingCart.vue'
 
 export default {
   name: "Address",
   components: {
-    ShoppingCart,
     Button,
-    Stepper
+    Stepper,
+    // ShoppingCart
   },
   data() {
     return {
-      gender: [],
-      county: []
+      genders: ["先生", "女士", "小姐", "無需稱謂"],
+      name: "",
+      mobile: "",
+      email: "",
+      county: [],
+      address: "",
+
+      products: [
+        {id: 1, name: "破壞補丁修身牛仔褲", price: 3999,  quantity: 0},
+        {id: 2, name: "刷色直筒牛仔褲", price: 1299,  quantity: 0}
+      ]
     }
   }
 }

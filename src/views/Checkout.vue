@@ -11,8 +11,7 @@
           <div class="input-group"><label for="cvc">CVC / CCV</label><input id="cvc" placeholder="123" type="text"></div>
         </fieldset>
     </form>
-
-    <ShoppingCart/>
+    <!-- <ShoppingCart /> -->
   </div>
   <router-link :to="{name: 'Shipping'}">上一步</router-link>
   <router-link :to="{name: 'Shipping'}"><Button>確認下單</Button></router-link>
@@ -21,7 +20,7 @@
 <script>
 import Button from "@/components/Button"
 import Stepper from "@/components/Stepper"
-import ShoppingCart from "@/components/ShoppingCart"
+// import ShoppingCart from "@/components/ShoppingCart"
 
 
 export default {
@@ -29,8 +28,13 @@ export default {
   components: {
     Button,
     Stepper,
-    ShoppingCart
+    // ShoppingCart
   },
+  data() {
+    return {
+      
+    }
+  }
 }
 </script>
 
