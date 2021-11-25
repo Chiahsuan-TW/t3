@@ -13,8 +13,8 @@
     </form>
     <!-- <ShoppingCart /> -->
   </div>
-  <router-link :to="{name: 'Shipping'}">上一步</router-link>
-  <router-link :to="{name: 'Shipping'}"><Button>確認下單</Button></router-link>
+  <!-- <router-link :to="{name: 'Shipping'}">上一步</router-link> -->
+  <!-- <router-link :to="{name: 'Shipping'}"><Button>確認下單</Button></router-link> -->
 </template>
 
 <script>

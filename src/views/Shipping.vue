@@ -25,8 +25,8 @@
 
     <!-- <ShoppingCart /> -->
   </div>
-  <router-link :to="{name: 'Address'}">上一步</router-link>
-  <router-link :to="{name: 'Checkout'}"><Button>下一步</Button></router-link>
+  <!-- <router-link :to="{name: 'Address'}">上一步</router-link> -->
+  <!-- <router-link :to="{name: 'Checkout'}"><Button>下一步</Button></router-link> -->
 </template>
 
 <script>

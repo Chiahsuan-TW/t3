@@ -5,7 +5,7 @@
   </div>
   <Navbar/>
   <router-view />
-  <ShoppingCart :products="products" @click-plus="addItem" @click-minus="removeItem"/>
+  <!-- <ShoppingCart :products="products" @click-plus="addItem" @click-minus="removeItem"/> -->
 </template>
 
 <script>
