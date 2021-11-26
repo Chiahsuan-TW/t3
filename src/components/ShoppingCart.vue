@@ -21,7 +21,7 @@
       </div>
       <div class="shipping">
           <span>運費</span>
-          <span>免費</span>
+          <span>{{shipping === 0 ? '免費': shipping}}</span>
       </div>
       <div class="total">
           <span>小計</span>
@@ -38,6 +38,10 @@ export default {
     products: {
       type: Array,
       required: true,
+    },
+    shipping: {
+      type: Number,
+      required: true,
     }
   },
   methods: {
@@ -49,11 +53,11 @@ export default {
     }
   },
   computed: {
-    getTotal() {
-      return this.products.reduce((acc, item) => {
+    getTotal() { 
+      return (this.shipping + this.products.reduce((acc, item) => {
         acc += (item.price * item.quantity);
         return acc
-      }, 0)
+      }, 0))
     }
   }
 }

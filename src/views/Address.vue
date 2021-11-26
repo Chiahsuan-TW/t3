@@ -2,27 +2,7 @@
   <div class="container">
     
     <Stepper />
-    <form>
-      <fieldset>
-        <legend>填寫地址</legend>
-        <div class="input-group">
-          <label for="title">稱謂</label>
-          <select name="title" id="title">
-            <option v-for="(gender, index) in genders" :key="index" value="gender">{{gender}}</option>
-          </select>
-        </div>
-        <div class="input-group"><label for="name">姓名</label><input id="name" placeholder="請輸入姓名" type="text"></div>
-        <div class="input-group"><label for="tel">電話</label><input id="tel" placeholder="請輸入行動電話" type="tel"></div>
-        <div class="input-group"><label for="email">Email</label><input id="email" placeholder="請輸入電子郵件" type="email"></div>
-        <div class="input-group">
-          <label for="county">縣市</label>
-          <select name="county" id="county">
-            <option value="" placeholder="請選擇縣市" ></option>
-          </select>
-        </div>
-        <div class="input-group"><label for="address">地址</label><input id="address" placeholder="請輸入地址" type="text"></div>
-      </fieldset>
-    </form>
+    
     <!-- <ShoppingCart /> -->
     <router-link class="next" :to="{name: 'Shipping'}"><Button class="next">下一步 -></Button></router-link>
   </div>

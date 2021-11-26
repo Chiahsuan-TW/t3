@@ -3,13 +3,7 @@
     <Stepper />
 
     <form>
-        <fieldset>
-          <legend>付款資訊</legend>
-          <div class="input-group"><label for="name">持卡人姓名</label><input id="name" placeholder="John Doe" type="text"></div>
-          <div class="input-group"><label for="card-number">卡號</label><input id="card-number" placeholder="1111 2222 3333 4444" type="text"></div>
-          <div class="input-group"><label for="expiration">有效期限</label><input id="expiration" placeholder="MM/YY" type="text"></div>
-          <div class="input-group"><label for="cvc">CVC / CCV</label><input id="cvc" placeholder="123" type="text"></div>
-        </fieldset>
+        
     </form>
     <!-- <ShoppingCart /> -->
   </div>
@@ -18,7 +12,6 @@
 </template>
 
 <script>
-import Button from "@/components/Button"
 import Stepper from "@/components/Stepper"
 // import ShoppingCart from "@/components/ShoppingCart"
 

@@ -21,6 +21,9 @@ button {
   font-size: 14px;
   color: #FFF;
   width: 50%;
+}
 
+button:hover {
+  cursor: pointer;
 }
 </style>

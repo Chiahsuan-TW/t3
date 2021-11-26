@@ -2,25 +2,7 @@
   <div class="container">
     <Stepper />
     <form>
-      <fieldset>
-        <legend>運送方式</legend>
-        <div class="option-group">
-          <input type="radio" id="standard" name="shipping">
-          <label for="stansard">
-            <span>標準運送</span>
-            <span>約 3~7 個工作天</span>
-          </label>
-          <span>免費</span>
-        </div>
-        <div class="option-group">
-          <input type="radio" id="DHL" name="shipping">
-          <label for="DHL">
-            <span>DHL 貨運</span>
-            <span>48 小時內送達</span>
-          </label>
-          <span>$500</span>
-        </div>
-      </fieldset>
+      
     </form>
 
     <!-- <ShoppingCart /> -->
