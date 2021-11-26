@@ -1,20 +1,16 @@
 <template>
-  <Navbar/>
+  <Navbar />
   <router-view />
 </template>
 
 <script>
-import Navbar from "@/components/Navbar"
+import Navbar from "@/components/Navbar";
 
-export default  {
+export default {
   components: {
     Navbar,
   },
-  
-}
+};
 </script>
 
-
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

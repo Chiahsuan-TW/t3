@@ -3,29 +3,31 @@
     <div class="shopping-cart">
       <div class="product">
         <div v-for="product in products" :key="product.id" class="product-item">
-            <div class="product-item-image"><img :src="product.image" alt=""></div>
-            <div class="product-item-detail">
-              <div class="detail-group">
-                <h3>{{product.name}}</h3>
-                <div class="select">
-                  <button class="add" @click.stop="addItem(product)">＋</button>
-                  <span class="amount">{{product.quantity}}</span>
-                  <button class="remove" @click="removeItem(product) ">-</button>
-                </div>
-              </div>
-              <div class="detail-group">
-                <span class="amount">${{product.price}}</span>
+          <div class="product-item-image">
+            <img :src="product.image" alt="" />
+          </div>
+          <div class="product-item-detail">
+            <div class="detail-group">
+              <h3>{{ product.name }}</h3>
+              <div class="select">
+                <button class="add" @click.stop="addItem(product)">＋</button>
+                <span class="amount">{{ product.quantity }}</span>
+                <button class="remove" @click="removeItem(product)">-</button>
               </div>
             </div>
+            <div class="detail-group">
+              <span class="amount">${{ product.price }}</span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="shipping">
-          <span>運費</span>
-          <span>{{shipping === 0 ? '免費': shipping}}</span>
+        <span>運費</span>
+        <span>{{ shipping === 0 ? "免費" : shipping }}</span>
       </div>
       <div class="total">
-          <span>小計</span>
-          <span>{{getTotal}}</span>
+        <span>小計</span>
+        <span>{{ getTotal }}</span>
       </div>
     </div>
   </div>
@@ -42,31 +44,32 @@ export default {
     shipping: {
       type: Number,
       required: true,
-    }
+    },
   },
   methods: {
     addItem(product) {
-      this.$emit('click-plus', product)
+      this.$emit("click-plus", product);
     },
     removeItem(product) {
-      this.$emit('click-minus', product)
-    }
+      this.$emit("click-minus", product);
+    },
   },
   computed: {
-    getTotal() { 
-      return (this.shipping + this.products.reduce((acc, item) => {
-        acc += (item.price * item.quantity);
-        return acc
-      }, 0))
-    }
-  }
-}
+    getTotal() {
+      return (
+        this.shipping +
+        this.products.reduce((acc, item) => {
+          acc += item.price * item.quantity;
+          return acc;
+        }, 0)
+      );
+    },
+  },
+};
 </script>
 
-
 <style lang="scss" scoped>
-@use './../assets/scss/_breakpoints.scss';
-
+@use "./../assets/scss/_breakpoints.scss";
 
 /*shopping-cart*/
 .container {
@@ -77,7 +80,6 @@ export default {
     max-width: 50%;
   }
 }
-
 
 .shopping-cart {
   padding: 16px 18px;
@@ -96,7 +98,6 @@ export default {
         gap: 61px;
       }
     }
-
   }
 }
 
@@ -119,13 +120,13 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 18px 0 36px 0;
-  border-top: 1px solid #F0F0F5; 
+  border-top: 1px solid #f0f0f5;
 }
 
 .total {
   display: flex;
   justify-content: space-between;
   padding: 18px 0 36px 0;
-  border-top: 1px solid #F0F0F5;
+  border-top: 1px solid #f0f0f5;
 }
 </style>

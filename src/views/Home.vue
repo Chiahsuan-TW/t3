@@ -1,32 +1,36 @@
 <template>
   <div class="container">
-    <Stepper />
+    <Stepper :currentStep="currentStep" />
     <form>
       <keep-alive>
         <component
           :is="`Step${currentStep}`"
           @select-delivery="getShipping"
+          @input="update"
+          :formData="formData"
         ></component>
       </keep-alive>
     </form>
-    <ShoppingCart 
-      :products="products" 
-      :shipping="shipping" 
-      @click-plus="addItem" 
-      @click-minus="removeItem"/>
+    <ShoppingCart
+      :products="products"
+      :shipping="formData.shipping"
+      @click-plus="addItem"
+      @click-minus="removeItem"
+    />
     <Button v-show="currentStep > 1" @click="previous">上一步</Button>
     <Button v-if="currentStep === 3">確認下單</Button>
     <Button v-else @click="next">下一步</Button>
+    <pre>{{ formData }}</pre>
   </div>
 </template>
 
 <script>
-import Stepper from '@/components/Stepper'
-import Button from "@/components/Button"
-import ShoppingCart from '@/components/ShoppingCart'
-import Step1 from '@/components/Form/Step1'
-import Step2 from '@/components/Form/Step2'
-import Step3 from '@/components/Form/Step3'
+import Stepper from "@/components/Stepper";
+import Button from "@/components/Button";
+import ShoppingCart from "@/components/ShoppingCart";
+import Step1 from "@/components/Form/Step1";
+import Step2 from "@/components/Form/Step2";
+import Step3 from "@/components/Form/Step3";
 
 export default {
   components: {
@@ -40,39 +44,70 @@ export default {
   data() {
     return {
       currentStep: 1,
-      shipping: 0,
+      // shipping: 0,
       total: 0,
       products: [
-        {id: 1, name: "破壞補丁修身牛仔褲", price: 3999,  quantity: 0, image: require("@/assets/images/product-1.png")},
-        {id: 2, name: "刷色直筒牛仔褲", price: 1299,  quantity: 0, image: require("@/assets/images/product-2.png")}
-      ]
-    }
+        {
+          id: 1,
+          name: "破壞補丁修身牛仔褲",
+          price: 3999,
+          quantity: 0,
+          image: require("@/assets/images/product-1.png"),
+        },
+        {
+          id: 2,
+          name: "刷色直筒牛仔褲",
+          price: 1299,
+          quantity: 0,
+          image: require("@/assets/images/product-2.png"),
+        },
+      ],
+      formData: {
+        title: "",
+        name: "",
+        mobile: "",
+        email: "",
+        county: "",
+        address: "",
+        shipping: 0,
+        cardHolder: "",
+        cardNumber: "",
+        expiration: "",
+        cvc: "",
+      },
+    };
   },
   methods: {
     addItem(product) {
       product.quantity += 1;
     },
     removeItem(product) {
-      if(!product.quantity) return
+      if (!product.quantity) return;
       product.quantity -= 1;
     },
     next() {
-      this.currentStep += 1
+      this.currentStep += 1;
     },
     previous() {
-      this.currentStep -= 1
+      this.currentStep -= 1;
     },
     getShipping(value) {
-      // console.log('parent',value)
-      this.shipping = Number(value)
-    }
+      console.log('parent',value)
+      this.formData.shipping = Number(value);
+    },
+    update(value) {
+      console.log(value)
+      this.formData = {
+        ...this.formData,
+        ...value,
+      };
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/_breakpoints.scss';
-
+@use "@/assets/scss/_breakpoints.scss";
 
 .container {
   max-width: 375px;
@@ -85,7 +120,6 @@ export default {
 }
 
 form {
-    margin-top: 24px;
-  }
-
+  margin-top: 24px;
+}
 </style>

@@ -1,26 +1,32 @@
 <template>
   <div class="stepper">
-      <h3>結帳</h3>
-      <div class="stepper-process">
-        <span class="active">1</span>
-        <span class="connect-line"></span>
-        <span class="pending">2</span>
-        <span class="connect-line"></span>
-        <span class="pending">3</span>
-      </div>
+    <h3>結帳</h3>
+    <div class="stepper-process">
+      <span v-if="currentStep > 1" class="completed"></span>
+      <span v-else :class="{ active: currentStep === 1 }">1</span>
+      <span class="connect-line"></span>
+      <span v-if="currentStep > 2" class="completed"></span>
+      <span v-else :class="['pending', { active: currentStep === 2 }]">2</span>
+      <span class="connect-line"></span>
+      <span :class="['pending', { active: currentStep === 3 }]">3</span>
     </div>
+  </div>
 </template>
 
-
 <script>
-
 export default {
-  name: "Stepper"
-}
+  name: "Stepper",
+  props: {
+    currentStep: {
+      type: Number,
+      default: 1,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-@use './../assets/scss/_color.scss';
+@use "./../assets/scss/_color.scss";
 
 /*stepper*/
 .stepper {
@@ -39,7 +45,6 @@ export default {
     justify-content: space-between;
     align-items: center;
 
-
     span {
       display: flex;
       justify-content: center;
@@ -54,7 +59,7 @@ export default {
     .connect-line {
       width: 60px;
       height: 1px;
-      background-color: #F0F0F5;
+      background-color: #afb1bd;
       border-radius: 0;
     }
 
@@ -62,9 +67,13 @@ export default {
       background-color: #000;
     }
 
+    .completed + .connect-line {
+      background-color: #000;
+    }
+
     .pending {
-      border: 1px solid #AFB1BD;
-      color: #AFB1BD;
+      border: 1px solid #afb1bd;
+      color: #afb1bd;
     }
 
     .active {
@@ -74,8 +83,9 @@ export default {
 
     .completed {
       border: 0;
+      background: url("./../assets/images/check.png") no-repeat center center;
       background-color: color.$black;
-      color: #FFF;
+      color: #fff;
     }
   }
 }

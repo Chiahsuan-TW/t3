@@ -2,15 +2,27 @@
   <fieldset>
     <legend>運送方式</legend>
     <div class="option-group">
-      <input v-model="shipping" type="radio" id="standard" name="shipping" value="0">
+      <input
+        v-model="shipping"
+        type="radio"
+        id="standard"
+        name="shipping"
+        value="0"
+      />
       <label for="standard">
-          <span>標準運送</span>
-          <span>約 3~7 個工作天</span>
+        <span>標準運送</span>
+        <span>約 3~7 個工作天</span>
       </label>
       <span>免費</span>
     </div>
-    <div class="option-group" >
-      <input v-model="shipping" type="radio" id="DHL" name="shipping" value="500">
+    <div class="option-group">
+      <input
+        v-model="shipping"
+        type="radio"
+        id="DHL"
+        name="shipping"
+        value="500"
+      />
       <label for="DHL">
         <span>DHL 貨運</span>
         <span>48 小時內送達</span>
@@ -25,30 +37,28 @@ export default {
   name: "Step2",
   data() {
     return {
-      shipping: 0
-    }
+      shipping: 0,
+    };
   },
   // 綁定點擊事件shipping的價格資料不是當下點選的那個？？
   methods: {
     selectDelivery(newValue) {
-      console.log(this.shipping)
+      console.log(this.shipping);
       // this.$emit('select-delivery', this.shipping)
-      this.$emit('select-delivery', newValue)
-    }
+      this.$emit("select-delivery", newValue);
+    },
   },
   watch: {
     shipping(newValue) {
       this.selectDelivery(newValue);
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
-
 <style lang="scss" scoped>
-@use '@/assets/scss/_breakpoints.scss';
-@use '@/assets/scss/_color.scss';
-
+@use "@/assets/scss/_breakpoints.scss";
+@use "@/assets/scss/_color.scss";
 
 fieldset {
   border: 0;
@@ -69,7 +79,6 @@ fieldset {
   border: 1px solid color.$black;
   border-radius: 4px;
 
-
   label {
     display: flex;
     flex-direction: column;
@@ -82,7 +91,6 @@ fieldset {
   input {
     margin-right: 20px;
     padding: 12px 18px;
-  
   }
 
   span:first-child {

@@ -4,16 +4,16 @@
       <div class="menu">
         <button @click="toggleMenu" class="menu-hamburger"></button>
         <a href="#" class="menu-brand">
-          <div><img src="@/assets/images/logo.png" alt="alpha logo"></div>
+          <div><img src="@/assets/images/logo.png" alt="alpha logo" /></div>
           <h1>Alpha Shop</h1>
         </a>
       </div>
       <nav class="desktop menu-list">
-          <a href="##" class="menu-list-item">男款</a>
-          <a href="##" class="menu-list-item">女款</a>
-          <a href="##" class="menu-list-item">最新消息</a>
-          <a href="##" class="menu-list-item">聯絡我們</a>
-          <a href="##" class="menu-list-item">客製商品</a>
+        <a href="##" class="menu-list-item">男款</a>
+        <a href="##" class="menu-list-item">女款</a>
+        <a href="##" class="menu-list-item">最新消息</a>
+        <a href="##" class="menu-list-item">聯絡我們</a>
+        <a href="##" class="menu-list-item">客製商品</a>
       </nav>
       <div class="desktop service">
         <button class="service-search"></button>
@@ -22,7 +22,7 @@
       </div>
 
       <!--dropdown for mobile-->
-      <div :class="['dropdown', {'dropdown-show' : visibility }]">
+      <div :class="['dropdown', { 'dropdown-show': visibility }]">
         <nav class="menu-list">
           <a href="##" class="menu-list-item">男款</a>
           <a href="##" class="menu-list-item">女款</a>
@@ -40,27 +40,25 @@
   </header>
 </template>
 
-
 <script>
-
 export default {
-  name: 'Navbar',
+  name: "Navbar",
   data() {
     return {
       visibility: false,
-    }
+    };
   },
   methods: {
     toggleMenu() {
-      this.visibility = !this.visibility
-    }
-  }
-}
+      this.visibility = !this.visibility;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-@use './../assets/scss/_color.scss';
-@use './../assets/scss/_breakpoints.scss';
+@use "./../assets/scss/_color.scss";
+@use "./../assets/scss/_breakpoints.scss";
 
 * {
   color: color.$black;
@@ -88,7 +86,7 @@ export default {
 
   > button {
     position: absolute;
-    background: url('./../assets/images/hamburger.png') no-repeat;
+    background: url("./../assets/images/hamburger.png") no-repeat;
     width: 20px;
     height: 20px;
     cursor: pointer;
@@ -103,8 +101,6 @@ export default {
     gap: 8px;
     align-items: center;
     margin: 0 auto;
-    
-
 
     img {
       vertical-align: middle;
@@ -113,7 +109,6 @@ export default {
     h1 {
       font-size: 20px;
       font-weight: 600;
-
     }
   }
 
@@ -133,7 +128,6 @@ export default {
   }
 }
 
-
 .desktop.menu-list {
   display: none;
 
@@ -144,7 +138,6 @@ export default {
     flex-direction: row;
     margin-right: 50px;
   }
-  
 }
 
 .desktop.service {
@@ -154,8 +147,6 @@ export default {
     display: flex;
   }
 }
-
-
 
 .dropdown {
   display: none;
@@ -175,25 +166,21 @@ export default {
     margin-left: auto;
   }
 
-
   > * {
     width: 24px;
     height: 24px;
   }
 
   &-search {
-    background: url('./../assets/images/magnifier.png') no-repeat;
+    background: url("./../assets/images/magnifier.png") no-repeat;
   }
 
   &-cart {
-    background: url('./../assets/images/cart.png') no-repeat;
+    background: url("./../assets/images/cart.png") no-repeat;
   }
 
   &-dark-mode {
-    background: url('./../assets/images/moon.png') no-repeat;
+    background: url("./../assets/images/moon.png") no-repeat;
   }
-
 }
-
-
 </style>
