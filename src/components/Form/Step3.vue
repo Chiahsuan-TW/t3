@@ -6,6 +6,7 @@
       <input 
         @input="$emit('input', {cardHolder: $event.target.value })"
         id="name" 
+        required
         placeholder="John Doe" 
         type="text" />
     </div>
@@ -14,6 +15,7 @@
       <input 
         @input="$emit('input', {cardNumber: $event.target.value })"
         id="card-number" 
+        required
         placeholder="1111 2222 3333 4444" 
         type="text" />
     </div>
@@ -22,6 +24,7 @@
       <input 
         @input="$emit('input', { expiration: $event.target.value })"
         id="expiration" 
+        required
         placeholder="MM/YY" 
         type="text" />
     </div>
@@ -30,6 +33,7 @@
       <input 
         @input="$emit('input', { cvc: $event.target.value })"
         id="cvc" 
+        required
         placeholder="123" 
         type="text" />
     </div>
@@ -45,14 +49,7 @@ export default {
 <style lang="scss" scoped>
 @use "@/assets/scss/_breakpoints.scss";
 
-.container {
-  max-width: 375px;
-  margin: 0 auto;
 
-  @include breakpoints.desktop {
-    max-width: 50%;
-  }
-}
 
 form {
   margin-top: 24px;

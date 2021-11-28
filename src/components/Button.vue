@@ -12,6 +12,7 @@ export default {
 
 <style lang="scss" scoped>
 @use "./../assets/scss/_color.scss";
+@use "./../assets/scss/_breakpoints.scss";
 
 button {
   padding: 14px 39px;
@@ -20,6 +21,10 @@ button {
   font-size: 14px;
   color: #fff;
   width: 50%;
+
+  @include breakpoints.desktop {
+    width: 30%;
+  }
 }
 
 button:hover {

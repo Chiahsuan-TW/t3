@@ -10,30 +10,33 @@
       </select>
     </div>
     <div class="input-group">
-      <label for="name" required>姓名</label>
+      <label for="name">姓名</label>
       <input
         @input="$emit('input', { name: $event.target.value })"
         id="name"
         placeholder="請輸入姓名"
         type="text"
+        required
       />
     </div>
     <div class="input-group">
-      <label for="tel" required>電話</label>
+      <label for="tel">電話</label>
       <input
         @input="$emit('input', { mobile: $event.target.value })"
         id="tel"
         placeholder="請輸入行動電話"
         type="tel"
+        required
       />
     </div>
     <div class="input-group">
-      <label for="email" required>Email</label>
+      <label for="email">Email</label>
       <input
         @input="$emit('input', { email: $event.target.value })"
         id="email"
         placeholder="請輸入電子郵件"
         type="email"
+        required
       />
     </div>
     <div class="input-group">
@@ -71,9 +74,6 @@ export default {
   data() {
     return {
       genders: ["先生", "女士", "小姐", "無需稱謂"],
-      name: "",
-      mobile: "",
-      email: "",
       counties: [
         "基隆市",
         "嘉義市",
@@ -98,7 +98,6 @@ export default {
         "雲林縣",
         "連江縣",
       ],
-      address: "",
       products: [
         { id: 1, name: "破壞補丁修身牛仔褲", price: 3999, quantity: 0 },
         { id: 2, name: "刷色直筒牛仔褲", price: 1299, quantity: 0 },

@@ -1,36 +1,34 @@
 <template>
-  <div class="container">
-    <div class="shopping-cart">
-      <div class="product">
-        <div v-for="product in products" :key="product.id" class="product-item">
-          <div class="product-item-image">
-            <img :src="product.image" alt="" />
+  <div class="shopping-cart">
+    <div class="product">
+      <div v-for="product in products" :key="product.id" class="product-item">
+        <div class="product-item-image">
+          <img :src="product.image" alt="" />
+        </div>
+        <div class="product-item-detail">
+          <div class="detail-group">
+            <h3>{{ product.name }}</h3>
+            <div class="select">
+              <button class="add" @click.stop="addItem(product)">＋</button>
+              <span class="amount">{{ product.quantity }}</span>
+              <button class="remove" @click="removeItem(product)">-</button>
+            </div>
           </div>
-          <div class="product-item-detail">
-            <div class="detail-group">
-              <h3>{{ product.name }}</h3>
-              <div class="select">
-                <button class="add" @click.stop="addItem(product)">＋</button>
-                <span class="amount">{{ product.quantity }}</span>
-                <button class="remove" @click="removeItem(product)">-</button>
-              </div>
-            </div>
-            <div class="detail-group">
-              <span class="amount">${{ product.price }}</span>
-            </div>
+          <div class="detail-group">
+            <span class="amount">${{ product.price }}</span>
           </div>
         </div>
       </div>
-      <div class="shipping">
-        <span>運費</span>
-        <span>{{ shipping === 0 ? "免費" : shipping }}</span>
-      </div>
-      <div class="total">
-        <span>小計</span>
-        <span>{{ getTotal }}</span>
-      </div>
     </div>
-  </div>
+    <div class="shipping">
+      <span>運費</span>
+      <span>{{ shipping === 0 ? "免費" : shipping }}</span>
+    </div>
+    <div class="total">
+      <span>小計</span>
+      <span>{{ getTotal }}</span>
+    </div>
+  </div>  
 </template>
 
 <script>
@@ -72,17 +70,17 @@ export default {
 @use "./../assets/scss/_breakpoints.scss";
 
 /*shopping-cart*/
-.container {
-  max-width: 375px;
-  margin: 0 auto;
-
-  @include breakpoints.desktop {
-    max-width: 50%;
-  }
-}
 
 .shopping-cart {
   padding: 16px 18px;
+
+  @include breakpoints.desktop {
+    flex-basis: 35%;
+    border: 1px solid #F0F0F5;
+    border-radius: 8px;
+    position: relative;
+    top: 60px;
+  }
 }
 
 .product {

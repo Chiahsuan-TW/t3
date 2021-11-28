@@ -1,26 +1,31 @@
 <template>
   <div class="container">
-    <Stepper :currentStep="currentStep" />
-    <form>
-      <keep-alive>
-        <component
-          :is="`Step${currentStep}`"
-          @select-delivery="getShipping"
-          @input="update"
-          :formData="formData"
-        ></component>
-      </keep-alive>
-    </form>
+    <section>
+      <Stepper :currentStep="currentStep" />
+      <form id="paymentInofo" @sumbit.prevent="confirm(formData)">
+        <keep-alive>
+          <component
+            :is="`Step${currentStep}`"
+            @select-delivery="getShipping"
+            @input="update"
+            :formData="formData"
+          ></component>
+        </keep-alive>
+      </form>
+    </section>
     <ShoppingCart
       :products="products"
       :shipping="formData.shipping"
       @click-plus="addItem"
       @click-minus="removeItem"
     />
-    <Button v-show="currentStep > 1" @click="previous">上一步</Button>
-    <Button v-if="currentStep === 3">確認下單</Button>
-    <Button v-else @click="next">下一步</Button>
-    <pre>{{ formData }}</pre>
+    <section :class="['button-group', {'buttons-group': currentStep > 1}]">
+      <Button v-show="currentStep > 1" @click="previous">上一步</Button>
+      <Button v-if="currentStep === 3" type="submit" form="paymentInfo" @click.stop.prevent="confirm(formData)">確認下單</Button>
+      <Button v-else @click="next">下一步</Button>
+    </section>
+    <!-- isTrusted哪來的？？？ -->
+    <!-- <pre>{{ formData }}</pre> -->
   </div>
 </template>
 
@@ -100,10 +105,14 @@ export default {
       this.formData = {
         ...this.formData,
         ...value,
-      };
+      }
     },
+    confirm(formData) {
+      const form = JSON.stringify(formData)
+      localStorage.setItem('paymentInfo', form)
+    }  
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -113,13 +122,42 @@ export default {
   max-width: 375px;
   margin: 0 auto;
   padding: 0 17px 40px 17px;
+  text-align: right;
 
   @include breakpoints.desktop {
-    max-width: 50%;
+    max-width: 992px;
+    margin-top: 80px;
+    padding: 0;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+  }
+}
+
+section {
+  @include breakpoints.desktop {
+    flex-basis: 50%;
+  }
+}
+
+section:first-child {
+  @include breakpoints.desktop {
+    margin-bottom: 24px;
   }
 }
 
 form {
   margin-top: 24px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttons-group {
+  justify-content: space-between;
 }
 </style>
