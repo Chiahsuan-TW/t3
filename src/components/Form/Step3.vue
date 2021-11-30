@@ -43,6 +43,9 @@
 <script>
 export default {
   name: "Step3",
+  emits: {
+    input: null
+  },
 };
 </script>
 
@@ -58,7 +61,7 @@ form {
 fieldset {
   display: flex;
   flex-wrap: wrap;
-  gap: 5%;
+  // gap: 5%;
   border: 0;
   text-align: left;
   font-size: 0;
@@ -68,11 +71,33 @@ fieldset {
     font-size: 24px;
   }
 
-  > div {
+  .input-group {
     flex: 1 0 100%;
     display: flex;
     flex-direction: column;
     margin-top: 24px;
+  }
+
+  @include breakpoints.desktop {
+    justify-content: space-between;
+  }
+
+  .input-group {
+    @include breakpoints.desktop {
+      max-width: 70%;
+    }
+  }
+
+  .input-group:nth-child(4) {
+    @include breakpoints.desktop {
+      max-width: 48%;
+    }
+  }
+
+  .input-group:nth-child(5) {
+    @include breakpoints.desktop {
+      max-width: 48%;
+    }
   }
 
   input {

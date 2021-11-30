@@ -35,6 +35,9 @@
 <script>
 export default {
   name: "Step2",
+  emits: {
+    input: null
+  },
   data() {
     return {
       shipping: 0,
@@ -78,6 +81,10 @@ fieldset {
   padding: 10px 20px;
   border: 1px solid color.$black;
   border-radius: 4px;
+
+  @include breakpoints.desktop {
+    width: 70%;
+  }
 
   label {
     display: flex;

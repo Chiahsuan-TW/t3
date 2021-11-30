@@ -20,12 +20,12 @@
       @click-minus="removeItem"
     />
     <section :class="['button-group', {'buttons-group': currentStep > 1}]">
-      <Button v-show="currentStep > 1" @click="previous">上一步</Button>
+      <Button v-show="currentStep > 1" @click="previous" class="previous">←  上一步</Button>
       <Button v-if="currentStep === 3" type="submit" form="paymentInfo" @click.stop.prevent="confirm(formData)">確認下單</Button>
-      <Button v-else @click="next">下一步</Button>
+      <Button v-else @click="next">下一步  →</Button>
     </section>
-    <!-- isTrusted哪來的？？？ -->
-    <!-- <pre>{{ formData }}</pre> -->
+    
+    <pre>{{ formData }}</pre>
   </div>
 </template>
 
@@ -97,11 +97,12 @@ export default {
       this.currentStep -= 1;
     },
     getShipping(value) {
-      console.log('parent',value)
+      // console.log('parent',value)
       this.formData.shipping = Number(value);
     },
     update(value) {
       console.log(value)
+      console.log('105',this.formData)
       this.formData = {
         ...this.formData,
         ...value,
@@ -109,6 +110,7 @@ export default {
     },
     confirm(formData) {
       const form = JSON.stringify(formData)
+      console.log(form)
       localStorage.setItem('paymentInfo', form)
     }  
   },
@@ -159,5 +161,12 @@ form {
 
 .buttons-group {
   justify-content: space-between;
+}
+
+.previous {
+  background-color: #fff;
+  color: #000;
+  text-align: left;
+  padding: 0;
 }
 </style>

@@ -71,6 +71,10 @@
 <script>
 export default {
   name: "Step1",
+  //isTrusted
+  emits: {
+    input: null
+  },
   data() {
     return {
       genders: ["先生", "女士", "小姐", "無需稱謂"],
