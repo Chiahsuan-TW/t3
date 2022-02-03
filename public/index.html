@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <!-- step1: 載入 google 的 SDK -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- step1: 載入 FB 的 SDK -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
   </head>
   <body>
     <noscript>
@@ -13,5 +17,6 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+
   </body>
 </html>

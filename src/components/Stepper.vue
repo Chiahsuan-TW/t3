@@ -4,19 +4,41 @@
     <div class="stepper-process">
       <div class="first-step">
         <span v-if="currentStep > 1" class="step-icon completed"></span>
-        <span v-else :class="['step-icon', { active: currentStep === 1 }]">1</span>
+        <span v-else :class="['step-icon', { active: currentStep === 1 }]"
+          >1</span
+        >
         <span class="step-description">寄送地址</span>
       </div>
       <span class="connect-line"></span>
       <div class="second-step">
         <span v-if="currentStep > 2" class="step-icon completed"></span>
-        <span v-else :class="['step-icon', 'pending', { active: currentStep === 2 }]">2</span>
-        <span :class="['step-description', 'pending-text', {'active-text': currentStep >= 2}]">運送方式</span>
+        <span
+          v-else
+          :class="['step-icon', 'pending', { active: currentStep === 2 }]"
+          >2</span
+        >
+        <span
+          :class="[
+            'step-description',
+            'pending-text',
+            { 'active-text': currentStep >= 2 },
+          ]"
+          >運送方式</span
+        >
       </div>
       <span class="connect-line"></span>
       <div class="third-step">
-        <span :class="['step-icon', 'pending', { active: currentStep === 3 }]">3</span>
-        <span :class="['step-description', 'pending-text', {'active-text': currentStep === 3}]">付款資訊</span>
+        <span :class="['step-icon', 'pending', { active: currentStep === 3 }]"
+          >3</span
+        >
+        <span
+          :class="[
+            'step-description',
+            'pending-text',
+            { 'active-text': currentStep === 3 },
+          ]"
+          >付款資訊</span
+        >
       </div>
     </div>
   </div>
@@ -116,7 +138,7 @@ export default {
     .pending-text {
       color: #afb1bd;
     }
-    
+
     .active-text {
       color: color.$black;
     }

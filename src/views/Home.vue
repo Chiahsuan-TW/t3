@@ -19,13 +19,23 @@
       @click-plus="addItem"
       @click-minus="removeItem"
     />
-    <section :class="['button-group', {'buttons-group': currentStep > 1}]">
-      <Button v-show="currentStep > 1" @click="previous" class="previous">←  上一步</Button>
-      <Button v-if="currentStep === 3" type="submit" form="paymentInfo" @click.stop.prevent="confirm(formData)">確認下單</Button>
-      <Button v-else @click="next">下一步  →</Button>
+    <section :class="['button-group', { 'buttons-group': currentStep > 1 }]">
+      <Button v-show="currentStep > 1" @click="previous" class="previous"
+        >← 上一步</Button
+      >
+      <Button
+        v-if="currentStep === 3"
+        type="submit"
+        form="paymentInfo"
+        @click.stop.prevent="confirm(formData)"
+        >確認下單</Button
+      >
+      <Button v-else @click="next">下一步 →</Button>
     </section>
-    
-    <pre>{{ formData }}</pre>
+    <div class="shadow">
+      <button @click="logOut">登出</button>
+    </div>
+    <!-- <pre>{{ formData }}</pre> -->
   </div>
 </template>
 
@@ -101,20 +111,38 @@ export default {
       this.formData.shipping = Number(value);
     },
     update(value) {
-      console.log(value)
-      console.log('105',this.formData)
+      console.log(value);
       this.formData = {
         ...this.formData,
         ...value,
-      }
+      };
     },
     confirm(formData) {
-      const form = JSON.stringify(formData)
-      console.log(form)
-      localStorage.setItem('paymentInfo', form)
-    }  
+      const form = JSON.stringify(formData);
+      console.log(form);
+      localStorage.setItem("paymentInfo", form);
+    },
+    async logOut() {
+      try {
+        const isLogout = window.confirm("確定要登出");
+        if (isLogout) {
+          const auth2 = window.gapi.auth2.getAuthInstance();
+          auth2.signOut().then(() => {
+            this.$store.dispatch("oAuthLogOut");
+            this.$router.push({ name: "SignIn" }); // 回到登入頁，必須放在.then()裡頭否則會需要按兩次在執行
+          });
+          window.alert("已登出");
+
+          window.FB.logout(function (response) {
+            console.log("res when logout", response);
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -134,7 +162,6 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
   }
 }
 

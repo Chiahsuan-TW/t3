@@ -28,7 +28,7 @@
       <span>小計</span>
       <span>{{ getTotal }}</span>
     </div>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -76,7 +76,7 @@ export default {
 
   @include breakpoints.desktop {
     flex-basis: 35%;
-    border: 1px solid #F0F0F5;
+    border: 1px solid #f0f0f5;
     border-radius: 8px;
     position: relative;
     top: 60px;

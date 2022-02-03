@@ -3,7 +3,11 @@
     <legend>填寫地址</legend>
     <div class="input-group">
       <label for="title">稱謂</label>
-      <select name="title" id="title" @change="$emit('input', {title: $event.target.value})">
+      <select
+        name="title"
+        id="title"
+        @change="$emit('input', { title: $event.target.value })"
+      >
         <option v-for="(gender, index) in genders" :key="index" :value="gender">
           {{ gender }}
         </option>
@@ -41,9 +45,12 @@
     </div>
     <div class="input-group">
       <label for="county">縣市</label>
-      <select 
-        @change="$emit('input', {county: $event.target.value})"
-        name="county" id="county" required>
+      <select
+        @change="$emit('input', { county: $event.target.value })"
+        name="county"
+        id="county"
+        required
+      >
         <option value="">請選擇縣市</option>
         <option
           v-for="(county, index) in counties"
@@ -73,7 +80,7 @@ export default {
   name: "Step1",
   //isTrusted
   emits: {
-    input: null
+    input: null,
   },
   data() {
     return {

@@ -36,7 +36,7 @@
 export default {
   name: "Step2",
   emits: {
-    input: null
+    input: null,
   },
   data() {
     return {
